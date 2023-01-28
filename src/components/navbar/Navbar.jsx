@@ -1,16 +1,19 @@
 import "./navbar.scss";
-import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
-import FullscreenExitOutlined from "@mui/icons-material/FullscreenExitOutlined";
-import NotificationsNoneOutlined from "@mui/icons-material/NotificationsNoneOutlined";
-import ChatBubbleOutlineOutlined from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import ListOutlined from "@mui/icons-material/ListOutlined";
-import avata from "../../image/avata.jpg"
+import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlined";
+import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import { DarkModeContext } from "../../context/darkModeContext";
+import { useContext } from "react";
 
 const Navbar = () => {
+  const { dispatch } = useContext(DarkModeContext);
+
   return (
-   <div className="navbar">
+    <div className="navbar">
       <div className="wrapper">
         <div className="search">
           <input type="text" placeholder="Search..." />
@@ -18,37 +21,40 @@ const Navbar = () => {
         </div>
         <div className="items">
           <div className="item">
-            <LanguageOutlinedIcon className="icon"/>
+            <LanguageOutlinedIcon className="icon" />
             English
           </div>
           <div className="item">
-            <DarkModeOutlined className="icon"/>
+            <DarkModeOutlinedIcon
+              className="icon"
+              onClick={() => dispatch({ type: "TOGGLE" })}
+            />
           </div>
           <div className="item">
-            <FullscreenExitOutlined className="icon"/>
+            <FullscreenExitOutlinedIcon className="icon" />
           </div>
           <div className="item">
-            <NotificationsNoneOutlined className="icon"/>
+            <NotificationsNoneOutlinedIcon className="icon" />
             <div className="counter">1</div>
           </div>
           <div className="item">
-            <ChatBubbleOutlineOutlined className="icon"/>
+            <ChatBubbleOutlineOutlinedIcon className="icon" />
             <div className="counter">2</div>
           </div>
           <div className="item">
-            <ListOutlined className="icon"/>
+            <ListOutlinedIcon className="icon" />
           </div>
           <div className="item">
             <img
-              src={avata}
+              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
               alt=""
               className="avatar"
             />
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   );
-}
+};
 
 export default Navbar;
